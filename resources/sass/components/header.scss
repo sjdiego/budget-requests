@@ -1,0 +1,73 @@
+.c-header {
+    display: flex;
+
+    &--top {
+        display: flex;
+        flex-direction: row;
+        height: 60px;
+
+        @media screen and (max-width: $bpm) {
+            flex-direction: column;
+            height: unset;
+        }
+    }
+
+    &--bottom {
+        display: flex;
+        flex-direction: column;
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-inline-start: 0;
+            margin-bottom: 0;
+            padding-top: 1em;
+            padding-bottom: 1em;
+
+            @media screen and (max-width: $bpm) {
+                flex-direction: column;
+            }
+
+            a {
+                color: #000;
+            }
+        }
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: flex-start;
+        align-self: center;
+        flex: 50%;
+
+        img {
+            max-width: 300px;
+        }
+
+        @media screen and (max-width: $bpm) {
+            flex: 100%;
+            justify-content: center;
+            margin: 15px;
+        }
+    }
+
+    &__quote {
+        font-weight: bold;
+    }
+
+    &__quote,
+    &__register {
+        display: flex;
+        align-self: center;
+        flex: 25%;
+        justify-content: center;
+
+        @media screen and (max-width: $bpm) {
+            flex: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+}

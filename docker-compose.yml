@@ -1,0 +1,36 @@
+version: "3.2"
+services:
+  php:
+    build: './docker/php'
+    networks:
+      - backend
+    volumes:
+      - ./:/usr/local/apache2/htdocs/
+  apache:
+    build: './docker/apache'
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/local/apache2/htdocs/
+  mysql:
+    build: './docker/mysql'
+    networks:
+      - backend
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./docker/mysql/data:/var/lib/mysql:rw"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=REDACTED_db
+      - MYSQL_USER=REDACTED
+      - MYSQL_PASSWORD=REDACTED
+networks:
+  frontend:
+  backend:

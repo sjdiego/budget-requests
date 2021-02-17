@@ -1,0 +1,17 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\User;
+use Faker\Generator as Faker;
+
+$factory->define(
+    User::class,
+    function (Faker $faker) {
+        return [
+            'email' => $faker->unique()->safeEmail,
+            'address' => $faker->address,
+            'phone' => $faker->phoneNumber
+        ];
+    }
+);

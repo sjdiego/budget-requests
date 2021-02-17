@@ -1,0 +1,211 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Endpoints",
+        "version": "1"
+    },
+    "paths": {
+        "/api/budget/list/{email}/": {
+            "get": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "It returns a list of budget requests",
+                "operationId": "App\\Http\\Controllers\\BudgetController::show",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email of an User",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A Budget list of resources"
+                    },
+                    "422": {
+                        "description": "A list of errors"
+                    }
+                }
+            }
+        },
+        "/api/budget/create": {
+            "post": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "Creates a new budget request resource",
+                "operationId": "App\\Http\\Controllers\\BudgetController::create",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "description",
+                                    "email",
+                                    "phone",
+                                    "address"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "description": "Title of the budget request",
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "description": "Category of the budget request",
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "description": "Description of the budget request",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Email of the user",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "Phone number of the user",
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "description": "Address of user",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "A Budget resource"
+                    },
+                    "422": {
+                        "description": "A list of errors"
+                    }
+                }
+            }
+        },
+        "/api/budget/edit/{id}": {
+            "put": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "Updates the data of the budget request",
+                "operationId": "App\\Http\\Controllers\\BudgetController::edit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Budget ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "Title of the budget request",
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "description": "Category of the budget request",
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "description": "Description of the budget request",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "A Budget resource"
+                    },
+                    "422": {
+                        "description": "A list of errors"
+                    }
+                }
+            }
+        },
+        "/api/budget/publish/{id}": {
+            "post": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "Changes the status of the budget request resource",
+                "operationId": "App\\Http\\Controllers\\BudgetController::publish",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Budget ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A Budget resource"
+                    },
+                    "422": {
+                        "description": "A list of errors"
+                    }
+                }
+            }
+        },
+        "/api/budget/discard/{id}": {
+            "post": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "Changes the status of the budget request resource",
+                "operationId": "App\\Http\\Controllers\\BudgetController::discard",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Budget ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A Budget resource"
+                    },
+                    "422": {
+                        "description": "A list of errors"
+                    }
+                }
+            }
+        }
+    }
+}

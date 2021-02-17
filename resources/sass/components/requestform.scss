@@ -1,0 +1,17 @@
+.c-requestform {
+    background-color: #ededed;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+
+        @media screen and (max-width: $bpl) {
+            flex-direction: column;
+        }
+    }
+
+    &__steps,
+    &__component {
+        flex: 1;
+    }
+}
